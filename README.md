@@ -22,8 +22,10 @@ __Pasos:__
 
 __Solución planteada:__  Verificar del lado del servidor el input que se recibe. Si solo se aceptan valores del 1 al 5 para las estrellas, se deberían rechazar solicitudes que incluyan valores fuera de ese rango.
 
-# Login admin
+# Admin Registration - Javier
 
-# Login bender
+# Login admin - Fiorella
 
-# View basket
+# Login bender - Fiorella
+
+# View basket - Fiorella
