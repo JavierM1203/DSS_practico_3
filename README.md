@@ -22,10 +22,33 @@ __Pasos:__
 
 __Solución planteada:__  Verificar del lado del servidor el input que se recibe. Si solo se aceptan valores del 1 al 5 para las estrellas, se deberían rechazar solicitudes que incluyan valores fuera de ese rango.
 
-# Admin Registration - Javier
+# Admin Registration
 
-# Login admin - Fiorella
+__Descripción:__ Es posible registrarse como un usuario con privilegios de administrador. Sucede porque se permite modificar campos ocultos en la solicitud realizada al crear un usuario y otorgar privilegios de administrador.  
+__Clasificación:__  A01:2021 – Pérdida de Control de Acceso    
+__Pasos:__  
+1. Registrarse desde la página e interceptar la petición desde ZAP.
 
-# Login bender - Fiorella
+    ![alt text](images/image-4.png)
 
-# View basket - Fiorella
+    ![alt text](images/image-5.png)
+
+2. En el cuerpo de la solicitud, añadir el campo _"role": "admin"_.
+
+    ![alt text](images/image-6.png)
+
+3. Al enviar la solicitud, en la respuesta se observa que el usuario ha sido creado con el rol de admin.
+
+    ![alt text](images/image-7.png)
+
+__Solución planteada:__  
+
+
+# Forged Review - Javier
+
+
+# Login Admin - Fiorella
+
+# Login Bender - Fiorella
+
+# View Basket - Fiorella
