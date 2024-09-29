@@ -8,19 +8,19 @@ __Clasificación:__  A03:2021 – Inyección??
 __Pasos:__  
 1. Interceptar desde ZAP la solicitud enviada al dar una review a la tienda.
 
-    _imagen_
+    ![alt text](images/image.png)
 
-2. Modificar el valor xx a 0.
+    ![alt text](images/image-1.png)
 
-    _imagen_
+2. Modificar el valor _rating_ a 0.
+
+    ![alt text](images/image-2.png)
 
 3. Enviar la solicitud.
 
-    _imagen_
+    ![alt text](images/image-3.png)
 
-__Solución planteada:__  
-
-
+__Solución planteada:__  Verificar del lado del servidor el input que se recibe. Si solo se aceptan valores del 1 al 5 para las estrellas, se deberían rechazar solicitudes que incluyan valores fuera de ese rango.
 
 # Login admin
 
