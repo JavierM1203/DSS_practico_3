@@ -54,7 +54,7 @@ Interceptar peticion al añadir al carrito y añadir cantidad negativa, luego pa
 
 # Upload Type - Javier
 
-Interceptar peticion al subir una queda y borrar el .pdf de la solicitud
+Interceptar peticion al subir una queja y borrar el .pdf de la solicitud
 
 # Login Admin - Fiorella
 
