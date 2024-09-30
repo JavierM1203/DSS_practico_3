@@ -129,7 +129,7 @@ __Pasos:__
 
 4. Modificar el id del carrito (bid)
    
-![alt text](images/cambioId.png.png)
+![alt text](images/cambioId.png)
 
 5. Visualizar el carrito de otro usuario.
    
