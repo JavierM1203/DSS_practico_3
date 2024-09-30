@@ -106,11 +106,13 @@ Esta inyección funciona debido al uso del comentario SQL (--), que omite la val
 
 ![alt text](images/loginBender.png)
 
-Riesgo adicional:
+**Riesgo adicional:**
 Además de la vulnerabilidad de inyección SQL, la exposición pública del correo electrónico de Bender constituye un riesgo de seguridad, ya que puede ser utilizado por atacantes para facilitar otros ataques, como phishing.
 
 __Solución planteada:__
+
 **Sanitización de las entradas:** Utilizar Prepared Statements para evitar la inyección SQL, ya que estos parametrizan las consultas, lo que impide que el input del usuario sea tratado como código ejecutable.
+
 **Ocultar información sensible:** Evitar la exposición de correos electrónicos u otros datos personales de los usuarios en la interfaz pública.
 
 # View Basket - Fiorella
