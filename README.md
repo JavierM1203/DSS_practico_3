@@ -115,8 +115,32 @@ __Solución planteada:__
 
 **Ocultar información sensible:** Evitar la exposición de correos electrónicos u otros datos personales de los usuarios en la interfaz pública.
 
-# View Basket - Fiorella
+# View Basket 
+__Descripción:__ Existe una vulnerabilidad de pérdida de control de acceso, en la vista del carrito, ya que se se pueden ver carritos de otros usuarios.
+
 __Clasificación:__  A01:2021 – Broken Access Control
+
+__Pasos:__  
+1. Ingresar a la pantalla del Basket.
+2. Abrir las herramientas de desarrollador del navegador (F12).
+3. Revisar los archivos hasta encontrar las cookies de session.
+   
+![alt text](images/cookiesSession.png)
+
+4. Modificar el id del carrito (bid)
+   
+![alt text](images/cambioId.png.png)
+
+5. Visualizar el carrito de otro usuario.
+   
+![alt text](images/cestaAjena.png)
+
+![alt text](images/view.png)
+
+__Solución planteada:__
+Se debe realizar el control de acceso del lado del servidor, donde el atacante no puede modificarlo. El sistema debe verificar que el ID del carrito corresponde al usuario autenticado antes de permitir cualquier visualización o modificación.
+
+
 
 # Manipulate Basket - Javier
 
