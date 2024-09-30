@@ -56,11 +56,34 @@ Interceptar peticion al añadir al carrito y añadir cantidad negativa, luego pa
 
 Interceptar peticion al subir una queja y borrar el .pdf de la solicitud
 
-# Login Admin - Fiorella
+
+# Login Admin 
+__Descripción:__  Existe una vulnerabilidad de inyección SQL en el sistema de inicio de sesión, ya que permite acceder como administrador sin conocer la contraseña, debido a que no se sanitizan correctamente los datos ingresados por el usuario.
+
+__Clasificación:__  A03:2021 – Inyección 
+
+__Pasos:__  
+1. Acceder a la pantalla de iniciar sesión.
+
+2. En el campo de "Email", ingresar la siguiente inyección sql:
+
+    ![alt text](images/inyeccionSql.png)
+   
+Esta inyección funciona porque el operador OR true hace que la condición en la consulta SQL siempre sea verdadera. El uso del comentario (--) omite la validación de la contraseña que sigue a continuación.
+
+4. En el campo de "Password" ingresar cualquier cosa.
+   
+5. Presionar el botón de Log in.
+   ![alt text](images/loginAdmin.png)
+   
+   
+__Solución planteada:__  Para prevenir inyecciones SQL, es fundamental utilizar Prepared Statements. Los Prepared Statements parametrizan las consultas SQL, evitando que el input del usuario se integre directamente en la consulta SQL. De esta manera, cualquier dato ingresado se tratará como valor y no como código ejecutable.
 
 # Login Bender - Fiorella
+__Clasificación:__  A03:2021 – Inyecciones  
 
 # View Basket - Fiorella
+__Clasificación:__  A03:2021 – Broken Access Control
 
 # Manipulate Basket - Javier
 
