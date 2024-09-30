@@ -61,3 +61,9 @@ Interceptar peticion al subir una queda y borrar el .pdf de la solicitud
 # Login Bender - Fiorella
 
 # View Basket - Fiorella
+
+# Upload Type - Javier
+
+Añadir item a carrito sin basketId, se va a generar objeto de item añadido con id pero no esta asociado a ningun carrito, realizar put request y añadir a carrito de otra persona
+
+
