@@ -46,6 +46,11 @@ __Solución planteada:__
 
 # Forged Review - Javier
 
+Interceptar peticion al realizar comentario y cambiar autor
+
+# Payback Time - Javier
+
+Interceptar peticion al añadir al carrito y añadir cantidad negativa, luego pagar con wallet
 
 # Login Admin - Fiorella
 
