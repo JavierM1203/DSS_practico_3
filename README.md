@@ -74,6 +74,7 @@ Esta inyección funciona porque el operador OR true hace que la condición en la
 4. En el campo de "Password" ingresar cualquier cosa.
    
 5. Presionar el botón de Log in.
+   
    ![alt text](images/loginAdmin.png)
    
    
