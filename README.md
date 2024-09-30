@@ -80,11 +80,41 @@ Esta inyección funciona porque el operador OR true hace que la condición en la
    
 __Solución planteada:__  Para prevenir inyecciones SQL, es fundamental utilizar Prepared Statements. Los Prepared Statements parametrizan las consultas SQL, evitando que el input del usuario se integre directamente en la consulta SQL. De esta manera, cualquier dato ingresado se tratará como valor y no como código ejecutable.
 
-# Login Bender - Fiorella
+# Login Bender 
+__Descripción:__  Existe una vulnerabilidad de inyección SQL en el sistema de inicio de sesión, ya que permite acceder como el Bender sin conocer su contraseña, debido a que no se sanitizan correctamente los datos ingresados por el usuario. Además se está exponiendo información sensible en la página, ya que el correo del mismo estaba visible públicamente.
+
 __Clasificación:__  A03:2021 – Inyecciones  
+Acceder a la pantalla de inicio de sesión.
+
+__Pasos:__  
+1. Acceder a la sección de About Us.
+2. Revisar las opiniones de los clientes.
+   
+![alt text](images/AboutUs.png)
+
+3. Copiar el mail del bender.
+4. Acceder a la pantalla de inicio de sesión.
+5. En el campo de "email", ingresar la siguiente inyección SQL con el correo de Bender:
+   
+![alt text](images/inyec.png)
+
+Esta inyección funciona debido al uso del comentario SQL (--), que omite la validación de la contraseña y fuerza a la consulta a tratar el usuario como si hubiera sido autenticado correctamente.
+
+6. En el campo de "password", ingresar cualquier valor, ya que no será validado por la inyección.
+
+7. Hacer clic en "Iniciar sesión".
+
+![alt text](images/loginBender.png)
+
+Riesgo adicional:
+Además de la vulnerabilidad de inyección SQL, la exposición pública del correo electrónico de Bender constituye un riesgo de seguridad, ya que puede ser utilizado por atacantes para facilitar otros ataques, como phishing.
+
+__Solución planteada:__
+**Sanitización de las entradas:** Utilizar Prepared Statements para evitar la inyección SQL, ya que estos parametrizan las consultas, lo que impide que el input del usuario sea tratado como código ejecutable.
+**Ocultar información sensible:** Evitar la exposición de correos electrónicos u otros datos personales de los usuarios en la interfaz pública.
 
 # View Basket - Fiorella
-__Clasificación:__  A03:2021 – Broken Access Control
+__Clasificación:__  A01:2021 – Broken Access Control
 
 # Manipulate Basket - Javier
 
