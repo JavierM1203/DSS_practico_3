@@ -116,14 +116,14 @@ __Solución planteada:__
 **Ocultar información sensible:** Evitar la exposición de correos electrónicos u otros datos personales de los usuarios en la interfaz pública.
 
 # View Basket 
-__Descripción:__ Existe una vulnerabilidad de pérdida de control de acceso, en la vista del carrito, ya que se se pueden ver carritos de otros usuarios.
+__Descripción:__ Existe una vulnerabilidad de pérdida de control de acceso, en la vista del carrito, ya que se pueden ver carritos de otros usuarios.
 
 __Clasificación:__  A01:2021 – Broken Access Control
 
 __Pasos:__  
 1. Ingresar a la pantalla del Basket.
 2. Abrir las herramientas de desarrollador del navegador (F12).
-3. Revisar los archivos hasta encontrar las cookies de session.
+3. Acceder al Session Storage.
    
 ![alt text](images/cookiesSession.png)
 
