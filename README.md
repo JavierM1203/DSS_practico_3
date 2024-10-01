@@ -1,15 +1,15 @@
 # Índice
 
-- [Sección 1](#Zero Stars)
-- [Sección 2](#Admin Registration)
-- [Sección 3](#Forged Review)
-- [Sección 4](#Payback Time)
-- [Sección 5](#Upload Type)
-- [Sección 6](#Login Admin)
-- [Sección 7](#Login Bender)
-- [Sección 8](#View Basket)
-- [Sección 9](#Manipulate Basket)
-- [Sección 10](#Christmas Special)
+- [Sección 1](#Zero-Stars)
+- [Sección 2](#Admin-Registration)
+- [Sección 3](#Forged-Review)
+- [Sección 4](#Payback-Time)
+- [Sección 5](#Upload-Type)
+- [Sección 6](#Login-Admin)
+- [Sección 7](#Login-Bender)
+- [Sección 8](#View-Basket)
+- [Sección 9](#Manipulate-Basket)
+- [Sección 10](#Christmas-Special)
  
 # Introducción
 OWASP Juice Shop es una aplicación web deliberadamente insegura. A continuación, se presentan 10 de las vulnerabilidades en la aplicación. 
