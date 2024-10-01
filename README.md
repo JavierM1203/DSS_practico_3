@@ -41,20 +41,34 @@ __Pasos:__
 
     ![alt text](images/image-7.png)
 
-__Solución planteada:__  
-
+__Solución planteada:__  No permitir que el cliente envie información relacionada con los roles de los usuarios. La asignación de roles debe estar controlada por el backend. Al registrar un usuario, el servidor debe asignar automáticamente el rol correcto.
 
 # Forged Review - Javier
 
 Interceptar peticion al realizar comentario y cambiar autor
 
+__Descripción:__  
+__Clasificación:__  
+__Pasos:__  
+__Solución planteada:__  
+
+
 # Payback Time - Javier
 
-Interceptar peticion al añadir al carrito y añadir cantidad negativa, luego pagar con wallet
+Interceptar peticion al añadir al carrito y añadir cantidad negativa, luego pagar con wallet  
+__Descripción:__  
+__Clasificación:__  
+__Pasos:__  
+__Solución planteada:__  
+
 
 # Upload Type - Javier
 
-Interceptar peticion al subir una queja y borrar el .pdf de la solicitud
+Interceptar peticion al subir una queja y borrar el .pdf de la solicitud  
+__Descripción:__  
+__Clasificación:__  
+__Pasos:__  
+__Solución planteada:__  
 
 
 # Login Admin 
@@ -144,6 +158,10 @@ Se debe realizar el control de acceso del lado del servidor, donde el atacante n
 
 # Manipulate Basket - Javier
 
-Añadir item a carrito sin basketId, se va a generar objeto de item añadido con id pero no esta asociado a ningun carrito, realizar put request y añadir a carrito de otra persona
+Añadir item a carrito sin basketId, se va a generar objeto de item añadido con id pero no esta asociado a ningun carrito, realizar put request y añadir a carrito de otra persona  
 
+__Descripción:__  
+__Clasificación:__  
+__Pasos:__  
+__Solución planteada:__  
 
