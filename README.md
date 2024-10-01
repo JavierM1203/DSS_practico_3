@@ -57,7 +57,7 @@ __Pasos:__
 __Solución planteada:__  No permitir que el cliente envie información relacionada con los roles de los usuarios. La asignación de roles debe estar controlada por el backend. Al registrar un usuario, el servidor debe asignar automáticamente el rol correcto.
 
 
-# Forged Review - Javier
+# Forged Review
 
 Interceptar peticion al realizar comentario y cambiar autor
 
