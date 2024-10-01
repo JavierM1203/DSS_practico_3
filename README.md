@@ -148,7 +148,7 @@ Añadir item a carrito sin basketId, se va a generar objeto de item añadido con
 
 # Christmas Special 
 
-__Descripción:__ Existe una vulnerabilidad del tipo inyección, que permite obtener la lista de todos los productos, incluidos los que deberían estar ocultos para el usuario. Y luego con el id del producto comprar un producto no disponible.
+__Descripción:__ Existe una vulnerabilidad del tipo inyección, ya que ingresando una Inyección SQL ciega, se logra obtener la lista de todos los productos, incluidos los que deberían estar ocultos para el usuario. Y luego con el id del producto comprar un producto no disponible.
 __Clasificación:__ A03:2021 – Inyección 
 
 __Pasos:__ 
@@ -212,4 +212,13 @@ __Pasos:__
 
 __Solución planteada:__
 
+Para mitigar la vulnerabilidad de inyección SQL y prevenir la manipulación de productos no disponibles, se deben aplicar las siguientes medidas:
 
+**Utilización de Prepared Statements:**
+La consulta SQL debe utilizar Prepared Statements para evitar que el input del usuario se interprete como parte de la consulta SQL. Al parametrizar las consultas, el sistema trata los datos ingresados como valores, no como código ejecutable.
+
+**Validación y sanitización de entradas:**
+Validar y sanitizar todos los inputs provenientes del usuario, asegurándose de que cualquier parámetro en las solicitudes (como el parámetro q en la búsqueda de productos) esté limpio y no permita inyecciones.
+
+**Restricciones en el lado del servidor para la manipulación de IDs de productos:**
+El servidor debe validar si el producto que se está añadiendo al carrito es realmente elegible para el usuario y si está disponible en el inventario. No se debe confiar en los datos enviados desde el cliente. Para agregar una capa adicional de seguridad, se recomienda aplicar firma de tokens o validación del lado del servidor de los IDs de productos, de modo que la manipulación de datos en las solicitudes del cliente sea detectada y bloqueada.
