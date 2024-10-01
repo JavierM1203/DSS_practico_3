@@ -59,7 +59,6 @@ Interceptar peticion al subir una queja y borrar el .pdf de la solicitud
 
 # Login Admin 
 __Descripción:__  Existe una vulnerabilidad de inyección SQL en el sistema de inicio de sesión, ya que permite acceder como administrador sin conocer la contraseña, debido a que no se sanitizan correctamente los datos ingresados por el usuario.
-
 __Clasificación:__  A03:2021 – Inyección 
 
 __Pasos:__  
@@ -82,8 +81,7 @@ __Solución planteada:__  Para prevenir inyecciones SQL, es fundamental utilizar
 
 # Login Bender 
 __Descripción:__  Existe una vulnerabilidad de inyección SQL en el sistema de inicio de sesión, ya que permite acceder como el Bender sin conocer su contraseña, debido a que no se sanitizan correctamente los datos ingresados por el usuario. Además se está exponiendo información sensible en la página, ya que el correo del mismo estaba visible públicamente.
-
-__Clasificación:__  A03:2021 – Inyecciones  
+__Clasificación:__  A03:2021 – Inyección 
 Acceder a la pantalla de inicio de sesión.
 
 __Pasos:__  
@@ -117,7 +115,6 @@ __Solución planteada:__
 
 # View Basket 
 __Descripción:__ Existe una vulnerabilidad de pérdida de control de acceso, en la vista del carrito, ya que se pueden ver carritos de otros usuarios.
-
 __Clasificación:__  A01:2021 – Broken Access Control
 
 __Pasos:__  
@@ -145,5 +142,71 @@ Se debe realizar el control de acceso del lado del servidor, donde el atacante n
 # Manipulate Basket - Javier
 
 Añadir item a carrito sin basketId, se va a generar objeto de item añadido con id pero no esta asociado a ningun carrito, realizar put request y añadir a carrito de otra persona
+
+# Christmas Special 
+
+__Descripción:__ Existe una vulnerabilidad del tipo inyección, que permite obtener la lista de todos los productos, incluidos los que deberían estar ocultos para el usuario. Y luego con el id del producto comprar un producto no disponible.
+__Clasificación:__ A03:2021 – Inyección 
+
+__Pasos:__ 
+1. Interceptar las solicitudes con ZAP.
+2. Acceder a la página de búsqueda dentro de Orange Juice:
+   [Busqueda](http://localhost:3000/#/search)
+3. Dentro de las solicitudes, reconocer la solicitud [GET](http://localhost:3000/rest/products/search?q=), que devuelve la lista de los productos.
+
+      ![alt text](images/get.png)
+   
+4. Probar de generar una inyección, el primer intento es ingresar en el parámetro q: --> **';**
+   Enviar a través de la solicitud:
+      [GET](http://localhost:3000/rest/products/search?q=')
+   
+     ![alt text](images/antesSend1.png)
+   
+     ![alt text](images/antesSend2.png)
+
+5. Recibirá el error: SQLITE_ERROR: syntax error. Lo que indica que la inyección SQL es realmente posible.
+   
+    ![alt text](images/error.png)
+   
+6. Probar de generar una inyección, el segundo intento es ingresar en el parámetro q: --> **'--**
+   
+   ![alt text](images/antesSend3.png)
+   
+7. Recibirá el error: SQLITE_ERROR: incomplete input
+   
+    [alt text](images/incompleteInput.png)
+   
+8. Generar una inyección, el último intento es ingresar en el parámetro q: --> **'))--**
+   
+    ![alt text](images/antesSend4.png)
+
+   ![alt text](images/obtieneResultados.png)
+   
+    ![alt text](images/ID10.png)
+   
+   Con esto se logra obtener la lista completa de los productos y obtener el id de la oferta navideña.
+   
+9. Ir a la página de inicio de login e inicie sesión como cualquier usuario.
+
+10. Agregar un producto al carrito.
+
+11. Dentro de las solicitudes, reconocer la solicitud [GET](http://localhost:3000/api/BasketItems). 
+    
+![alt text](images/AGREGARALCARRITO.png)
+
+12. Modificar el  ProductId a 10 y presionar Send.
+
+![alt text](images/AGREGAREL10.png)
+
+![alt text](images/AGREGADO.png)
+
+
+13. Pagar para resolver el desafío.
+
+![alt text](images/LISTO.png)
+
+![alt text](images/COMPRAR.png)
+
+__Solución planteada:__
 
 
