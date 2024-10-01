@@ -57,15 +57,15 @@ __Pasos:__
 __Solución planteada:__  
 
 
-# Forged Review - Javier
+# Forged Review
 
 Interceptar peticion al realizar comentario y cambiar autor
 
-# Payback Time - Javier
+# Payback Time
 
 Interceptar peticion al añadir al carrito y añadir cantidad negativa, luego pagar con wallet
 
-# Upload Type - Javier
+# Upload Type
 
 Interceptar peticion al subir una queja y borrar el .pdf de la solicitud
 
@@ -128,7 +128,7 @@ __Solución planteada:__
 
 **Ocultar información sensible:** Evitar la exposición de correos electrónicos u otros datos personales de los usuarios en la interfaz pública.
 
-# View Basket 
+# View Basket
 __Descripción:__ Existe una vulnerabilidad de pérdida de control de acceso, en la vista del carrito, ya que se pueden ver carritos de otros usuarios.
 
 __Clasificación:__  A01:2021 – Broken Access Control
@@ -155,7 +155,7 @@ Se debe realizar el control de acceso del lado del servidor, donde el atacante n
 
 
 
-# Manipulate Basket - Javier
+# Manipulate Basket
 
 Añadir item a carrito sin basketId, se va a generar objeto de item añadido con id pero no esta asociado a ningun carrito, realizar put request y añadir a carrito de otra persona
 
