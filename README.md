@@ -177,7 +177,7 @@ __Pasos:__
    
 7. Recibirá el error: SQLITE_ERROR: incomplete input
    
-    [alt text](images/incompleteInput.png)
+    ![alt text](images/incompleteInput.png)
    
 8. Generar una inyección, el último intento es ingresar en el parámetro q: --> **'))--**
    
