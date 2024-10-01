@@ -59,6 +59,7 @@ Interceptar peticion al subir una queja y borrar el .pdf de la solicitud
 
 # Login Admin 
 __Descripción:__  Existe una vulnerabilidad de inyección SQL en el sistema de inicio de sesión, ya que permite acceder como administrador sin conocer la contraseña, debido a que no se sanitizan correctamente los datos ingresados por el usuario.
+
 __Clasificación:__  A03:2021 – Inyección 
 
 __Pasos:__  
@@ -80,7 +81,8 @@ Esta inyección funciona porque el operador OR true hace que la condición en la
 __Solución planteada:__  Para prevenir inyecciones SQL, es fundamental utilizar Prepared Statements. Los Prepared Statements parametrizan las consultas SQL, evitando que el input del usuario se integre directamente en la consulta SQL. De esta manera, cualquier dato ingresado se tratará como valor y no como código ejecutable.
 
 # Login Bender 
-__Descripción:__  Existe una vulnerabilidad de inyección SQL en el sistema de inicio de sesión, ya que permite acceder como el Bender sin conocer su contraseña, debido a que no se sanitizan correctamente los datos ingresados por el usuario. Además se está exponiendo información sensible en la página, ya que el correo del mismo estaba visible públicamente.
+__Descripción:__  Existe una vulnerabilidad de inyección SQL en el sistema de inicio de sesión, ya que permite acceder como Bender sin conocer su contraseña, debido a que no se sanitizan correctamente los datos ingresados por el usuario. Además se está exponiendo información sensible en la página, ya que el correo del mismo estaba visible públicamente.
+
 __Clasificación:__  A03:2021 – Inyección 
 Acceder a la pantalla de inicio de sesión.
 
@@ -115,6 +117,7 @@ __Solución planteada:__
 
 # View Basket 
 __Descripción:__ Existe una vulnerabilidad de pérdida de control de acceso, en la vista del carrito, ya que se pueden ver carritos de otros usuarios.
+
 __Clasificación:__  A01:2021 – Broken Access Control
 
 __Pasos:__  
@@ -151,14 +154,14 @@ __Clasificación:__ A03:2021 – Inyección
 __Pasos:__ 
 1. Interceptar las solicitudes con ZAP.
 2. Acceder a la página de búsqueda dentro de Orange Juice:
-   [Busqueda](http://localhost:3000/#/search)
-3. Dentro de las solicitudes, reconocer la solicitud [GET](http://localhost:3000/rest/products/search?q=), que devuelve la lista de los productos.
+  *http://localhost:3000/#/search*
+3. Dentro de las solicitudes, reconocer la solicitud GET *http://localhost:3000/rest/products/search?q=*, que devuelve la lista de los productos.
 
       ![alt text](images/get.png)
    
 4. Probar de generar una inyección, el primer intento es ingresar en el parámetro q: --> **';**
    Enviar a través de la solicitud:
-      [GET](http://localhost:3000/rest/products/search?q=')
+      GET *http://localhost:3000/rest/products/search?q='*
    
      ![alt text](images/antesSend1.png)
    
@@ -190,7 +193,7 @@ __Pasos:__
 
 10. Agregar un producto al carrito.
 
-11. Dentro de las solicitudes, reconocer la solicitud [GET](http://localhost:3000/api/BasketItems). 
+11. Dentro de las solicitudes, reconocer la solicitud GET *http://localhost:3000/api/BasketItems*. 
     
 ![alt text](images/AGREGARALCARRITO.png)
 
