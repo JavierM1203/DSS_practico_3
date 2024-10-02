@@ -208,13 +208,13 @@ __Pasos:__
 
 ![alt text](images/mp8.png)
 
-6. Modificamos la solicitud a este endpoint, indicando en la ruta el Id del item de carrito generado en el paso 2, y añadiendo el paramétro BasketId en el cuerpo de la solicitud indicando el BasketId de otro usuario.
+7. Modificamos la solicitud a este endpoint, indicando en la ruta el Id del item de carrito generado en el paso 2, y añadiendo el paramétro BasketId en el cuerpo de la solicitud indicando el BasketId de otro usuario.
 
 ![alt text](images/mp9.png)
 
 ![alt text](images/mp10.png)
 
-7. Al loguearnos como otro usuario, vemos el item añadido al carrito.
+8. Al loguearnos como otro usuario, vemos el item añadido al carrito.
 
 ![alt text](images/mp11.png)
 
