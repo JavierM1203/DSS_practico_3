@@ -59,31 +59,93 @@ __Solución planteada:__  No permitir que el cliente envie información relacion
 
 # Forged Review
 
-Interceptar peticion al realizar comentario y cambiar autor
+__Descripción:__  Es posible manipular el autor de un comentario al interceptar la petición correspondiente y modificar los datos enviados desde el cliente. Esto ocurre porque el servidor no valida adecuadamente el campo "author", permitiendo que cualquier usuario altere el nombre del autor del comentario antes de enviarlo. Como resultado, un atacante puede crear comentarios con nombres falsos o suplantar la identidad de otros usuarios, lo que puede afectar la integridad de los datos mostrados.
 
-__Descripción:__  
-__Clasificación:__  
+__Clasificación:__  A01:2021 – Pérdida de Control de Acceso
+
 __Pasos:__  
-__Solución planteada:__  
+1. Abre OWASP Juice Shop y navega a un producto.
+Escribe un comentario y captura la petición con OWASP ZAP antes de enviarla.
+
+![alt text](images/fw1.png)
+
+![alt text](images/fw2.png)
+
+2. En la petición interceptada, modifica el campo "author" con un valor diferente, por ejemplo, "Forged Review", para falsificar el autor del comentario.
+
+![alt text](images/fw3.png)
+
+3. Envía la solicitud y observa que el comentario se publica con el autor modificado.
+
+![alt text](images/fw4.png)
+
+__Solución planteada:__  El cliente nunca debería poder enviar o modificar datos sensibles como el autor de un comentario. La asignación de esta información debe estar completamente gestionada en el backend, garantizando que el autor del comentario sea el usuario autenticado que realiza la acción. El servidor debe ignorar cualquier intento de modificar el campo "author" en las solicitudes del cliente, asignando automáticamente el autor correcto en función del usuario autenticado. Esta medida previene la manipulación de datos y asegura la integridad de los comentarios en el sistema.
 
 
 
 # Payback Time
+ 
+__Descripción:__  Es posible explotar una vulnerabilidad en el proceso de compra al interceptar la petición de añadir productos al carrito y modificar la cantidad a un número negativo. Esta falla permite que el precio total del pedido se vuelva negativo, lo que da lugar a pagos fraudulentos cuando el usuario finaliza la compra usando el saldo en la wallet. Esta vulnerabilidad se debe a la falta de validación adecuada en los valores enviados al backend.
 
-Interceptar peticion al añadir al carrito y añadir cantidad negativa, luego pagar con wallet  
-__Descripción:__  
-__Clasificación:__  
+__Clasificación:__  A01:2021 – Pérdida de Control de Acceso
+
 __Pasos:__  
-__Solución planteada:__  
+1. Navegar a OWASP Juice Shop y seleccionar un producto para añadir al carrito.
+Utiliza una herramienta de interceptación como OWASP ZAP para capturar la petición de añadir el producto.
+
+![alt text](images/pt1.png)
+
+![alt text](images/pt2.png)
+
+2. Edita el campo "quantity" en la petición para que sea un valor negativo, por ejemplo, -1.
+
+![alt text](images/pt3.png)
+
+3. Observa que el carrito ahora muestra una cantidad negativa de productos y un total negativo en el precio.
+
+![alt text](images/pt4.png)
+
+4. Procede al proceso de checkout y selecciona el método de pago con la wallet.
+El sistema permite finalizar la compra con un saldo a favor debido al valor negativo en el total del pedido.
+
+![alt text](images/pt5.png)
+
+![alt text](images/pt6.png)
+
+![alt text](images/pt7.png)
+
+![alt text](images/pt8.png)
+
+
+__Solución planteada:__  El cliente nunca debería poder enviar o modificar datos sensibles como la cantidad de productos en el carrito de compras. La validación y el control de estos valores deben estar completamente gestionados en el backend para garantizar que solo se acepten cantidades válidas y positivas. El servidor debe ignorar cualquier intento de enviar cantidades negativas o valores manipulados desde el cliente, asegurándose de procesar solo las solicitudes con datos válidos y seguros. Esta medida asegura la integridad del proceso de compra y previene manipulaciones fraudulentas que puedan afectar el saldo o el total de la transacción.
 
 
 # Upload Type
 
-Interceptar peticion al subir una queja y borrar el .pdf de la solicitud  
-__Descripción:__  
-__Clasificación:__  
+__Descripción:__  Es posible interceptar la solicitud de subida de archivos al realizar una queja y manipular la extensión del archivo cargado para que no tenga una extensión válida como .pdf o .zip. Esta vulnerabilidad surge debido a la falta de validaciones estrictas en el backend sobre el tipo de archivo permitido, permitiendo que se suban archivos potencialmente peligrosos o no permitidos.
+
+__Clasificación:__  A05:2021 – Configuración de Seguridad Incorrecta
+
 __Pasos:__  
-__Solución planteada:__  
+1. Navegar a la sección de quejas en OWASP Juice Shop.
+Completar el formulario de queja, seleccionando un archivo con una extensión permitida (por ejemplo, .pdf o .zip).
+
+![alt text](images/ut1.png)
+
+2. Utiliza OWASP ZAP para interceptar la solicitud de subida del archivo al servidor.
+Modifica el nombre del archivo, eliminando la extensión permitida (por ejemplo, cambiando archivo.pdf a archivo).
+
+![alt text](images/ut2.png)
+
+3. Envía la solicitud modificada sin la extensión adecuada y verifica que el archivo se sube exitosamente.
+
+![alt text](images/ut3.png)
+
+4. Después de enviar la solicitud, verifica que el sistema acepte el archivo sin la extensión permitida y que se resuelva el desafío de "Upload Type"
+
+![alt text](images/ut4.png)
+
+__Solución planteada:__  La solución implica validar en el backend tanto la extensión como el tipo MIME del archivo subido. Solo deben aceptarse archivos con extensiones permitidas como .pdf o .zip, y su contenido debe corresponder al tipo MIME. Si el archivo no cumple con estas reglas, el servidor debe rechazar la solicitud, evitando así la subida de archivos maliciosos o manipulados.
 
 
 # Login Admin 
