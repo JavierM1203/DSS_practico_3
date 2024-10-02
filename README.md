@@ -170,15 +170,60 @@ __Solución planteada:__
 Se debe realizar el control de acceso del lado del servidor, donde el atacante no puede modificarlo. El sistema debe verificar que el ID del carrito corresponde al usuario autenticado antes de permitir cualquier visualización o modificación.
 
 
-
 # Manipulate Basket
 
 Añadir item a carrito sin basketId, se va a generar objeto de item añadido con id pero no esta asociado a ningun carrito, realizar put request y añadir a carrito de otra persona  
 
-__Descripción:__  
-__Clasificación:__  
+__Descripción:__  Es posible añadir un item al carrito de otro usuario. Esto sucede porque no se verifica que el usuario que está logueado tenga los permisos necesarios para modificar el carrito que esta manipulando.  
+__Clasificación:__  A01:2021 - Broken Access Control  
 __Pasos:__  
-__Solución planteada:__  
+
+1. Añadir un item al carrito e interceptar la petición.
+
+![alt text](images/mp1.png)
+
+![alt text](images/mp2.png)
+
+2. Borrar el paramétro BasketId de la petición y enviar. 
+
+![alt text](images/mp3.png)
+
+3. Esto va a hacer que se genere un item de carrito, el cual tendrá un Id, pero no va a tener ningún BasketId asociado.
+
+![alt text](images/mp4.png)
+
+3. Añadir más items de un producto que ya tengamos en el carrito para analizar los endpoins que son invocados. En esta caso, ya se tenía el producto Apple juice en el carrito y se añadió de nuevo.
+
+![alt text](images/mp5.png)
+
+4. Vemos que se invoca un endpoint que permite consultar los items de carrito por Id.
+
+![alt text](images/mp6.png)
+
+5. Al utilizar este endpoint para consultar el Id del item de carrito generado en el paso 2, vemos que el paramétro BasketId es nulo debido a que no se añadió a ningún carrito.
+
+![alt text](images/mp7.png)
+
+6. Tambien vemos que se llama a un endpoint para modificar la cantidad del item en el carrito.
+
+![alt text](images/mp8.png)
+
+6. Modificamos la solicitud a este endpoint, indicando en la ruta el Id del item de carrito generado en el paso 2, y añadiendo el paramétro BasketId en el cuerpo de la solicitud indicando el BasketId de otro usuario.
+
+![alt text](images/mp9.png)
+
+![alt text](images/mp10.png)
+
+7. Al loguearnos como otro usuario, vemos el item añadido al carrito.
+
+![alt text](images/mp11.png)
+
+__Solución planteada:__  Cada vez que se realice una acción sobre un basketId (ya sea al crear o modificar un ítem en el carrito), el servidor debe asegurarse de que el BasketId pertenece al usuario autenticado. 
+
+También, se podría evitar que el cliente envíe el campo BasketId en el cuerpo de la solicitud para crear o modificar items del carrito, y que sea el servidor el que asigne el BasketId del usuario autenticado, evitando que el cliente lo pueda modificar.
+
+
+
 # Christmas Special 
 
 __Descripción:__ Existe una vulnerabilidad del tipo inyección, ya que ingresando una Inyección SQL ciega, se logra obtener la lista de todos los productos, incluidos los que deberían estar ocultos para el usuario. Y luego con el id del producto comprar un producto no disponible.
