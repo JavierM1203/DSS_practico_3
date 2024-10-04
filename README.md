@@ -233,8 +233,6 @@ Se debe realizar el control de acceso del lado del servidor, donde el atacante n
 
 # Manipulate Basket
 
-Añadir item a carrito sin basketId, se va a generar objeto de item añadido con id pero no esta asociado a ningun carrito, realizar put request y añadir a carrito de otra persona  
-
 __Descripción:__  Es posible añadir un item al carrito de otro usuario. Esto sucede porque no se verifica que el usuario que está logueado tenga los permisos necesarios para modificar el carrito que esta manipulando.  
 __Clasificación:__  A01:2021 - Broken Access Control  
 __Pasos:__  
