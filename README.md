@@ -174,8 +174,7 @@ __Solución planteada:__  Para prevenir inyecciones SQL, es fundamental utilizar
 # Login Bender 
 __Descripción:__  Existe una vulnerabilidad de inyección SQL en el sistema de inicio de sesión, ya que permite acceder como Bender sin conocer su contraseña, debido a que no se sanitizan correctamente los datos ingresados por el usuario. Además se está exponiendo información sensible en la página, ya que el correo del mismo estaba visible públicamente.
 
-__Clasificación:__  A03:2021 – Inyección 
-Acceder a la pantalla de inicio de sesión.
+__Clasificación:__  A03:2021 – Inyección  
 
 __Pasos:__  
 1. Acceder a la sección de About Us.
