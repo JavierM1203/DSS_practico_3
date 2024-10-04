@@ -285,7 +285,7 @@ También, se podría evitar que el cliente envíe el campo BasketId en el cuerpo
 
 # Christmas Special 
 
-__Descripción:__ Existe una vulnerabilidad del tipo inyección, ya que ingresando una Inyección SQL ciega, se logra obtener la lista de todos los productos, incluidos los que deberían estar ocultos para el usuario. Y luego con el id del producto comprar un producto no disponible.
+__Descripción:__ Existe una vulnerabilidad del tipo inyección, ya que ingresando una Inyección SQL ciega, se logra obtener la lista de todos los productos, incluidos los que deberían estar ocultos para el usuario. Y luego con el id del producto comprar un producto no disponible.  
 __Clasificación:__ A03:2021 – Inyección 
 
 __Pasos:__ 
