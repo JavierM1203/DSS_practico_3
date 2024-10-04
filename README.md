@@ -251,7 +251,7 @@ __Pasos:__
 
 ![alt text](images/mp4.png)
 
-3. Añadir más items de un producto que ya tengamos en el carrito para analizar los endpoins que son invocados. En esta caso, ya se tenía el producto Apple juice en el carrito y se añadió de nuevo.
+3. Añadir más items de un producto que ya tengamos en el carrito para analizar los endpoints que son invocados. En esta caso, ya se tenía el producto Apple juice en el carrito y se añadió de nuevo.
 
 ![alt text](images/mp5.png)
 
